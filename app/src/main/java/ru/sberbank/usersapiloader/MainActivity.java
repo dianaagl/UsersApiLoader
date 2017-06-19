@@ -12,12 +12,12 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
     private final static int USER_LOADER_ID = 1;
     private final static String TAG = "main";
-    TextView loginView;
-    TextView id_view;
-    TextView urlView;
-    TextView htmlUrlView;
-    Button newUserBut;
-    UserLoader loader;
+    private TextView loginView;
+    private TextView id_view;
+    private TextView urlView;
+    private TextView htmlUrlView;
+    private Button newUserBut;
+    private UserLoader loader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +41,9 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public Loader<User> onCreateLoader(int id, Bundle args) {
+            loadJson apiLoader = new ApiLoader();
 
-            loader  = new UserLoader(MainActivity.this);
+            loader  = new UserLoader(MainActivity.this, apiLoader);
             return loader;
         }
 
